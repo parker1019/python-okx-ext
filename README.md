@@ -1,3 +1,13 @@
+### ⚠ Project Continuation Notice
+
+The original project appears to be no longer actively maintained.  
+
+To keep it up to date, I will continue its development and strive to support all API endpoints.
+
+Contributions, bug reports, and feature requests are welcome! Please feel free to submit a pull request or open an issue.  
+
+---
+
 ### Overview
 This is an unofficial Python wrapper for the [OKX exchange v5 API](https://www.okx.com/okx-api)
 
