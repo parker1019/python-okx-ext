@@ -4,6 +4,7 @@ python_okx.egg-info/
 *.DS_Store
 **/__pycache__
 **/**/__pycache__
+*.egg-info
 
 ### STS ###
 .apt_generated
