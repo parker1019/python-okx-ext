@@ -115,6 +115,9 @@ class AccountTest(unittest.TestCase):
     # def test_set_auto_loan(self):
     #     print(self.AccountAPI.set_auto_loan())
     #
+    # def test_set_account_level(self):
+    #     print(self.AccountAPI.set_account_level(acctLv='1'))
+    #
     # def test_activate_option(self):
     #     print(self.AccountAPI.activate_option())
 
