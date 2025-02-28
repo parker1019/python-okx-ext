@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-okx-ext"
+version = "0.0.0"
+authors = [{ name = "parker1019", email = "parker178912@gmail.com" }]
+description = "Python SDK for OKX"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.6"
+
+keywords = ["OKX", "crypto", "trading", "API", "SDK"]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "importlib-metadata",
+    "httpx[http2]",
+    "keyring",
+    "loguru",
+    "requests",
+    "Twisted",
+    "pyOpenSSL",
+]
+
+[project.urls]
+Homepage = "https://okx.com/docs-v5/"
+Repository = "https://github.com/parker1019/python-okx"
+Documentation = "https://okx.com/docs-v5/"
+Changelog = "https://github.com/parker1019/python-okx/releases"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["okx*"]
