@@ -14,9 +14,8 @@ This is an unofficial Python wrapper for the [OKX exchange v5 API](https://www.o
 If you came here looking to purchase cryptocurrencies from the OKX exchange, please go [here](https://www.okx.com/).
 
 #### Source code
-https://github.com/okxapi/python-okx
-#### OKX API Telegram
-https://t.me/OKXAPI
+https://github.com/parker1019/python-okx
+
 #### API trading tutorials
 - Spot trading: https://www.okx.com/help/how-can-i-do-spot-trading-with-the-jupyter-notebook
 - Derivative trading: https://www.okx.com/help/how-can-i-do-derivatives-trading-with-the-jupyter-notebook
@@ -40,10 +39,10 @@ Make sure you update often and check the [Changelog](https://www.okx.com/docs-v5
 - Register for an account: https://www.okx.com/account/register
 - Apply for an API key: https://www.okx.com/account/users/myApi
 
-#### Step 2: install python-okx
+#### Step 2: install python-okx-ext
 
 ```python
-pip install python-okx
+pip install python-okx-ext
 ```
 
 #### Step 3: Run examples
