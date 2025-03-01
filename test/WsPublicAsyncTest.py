@@ -8,7 +8,7 @@ def publicCallback(message):
 
 
 async def main():
-    
+
     # url = "wss://wspap.okex.com:8443/ws/v5/public?brokerId=9999"
     url = "wss://wspap.okx.com:8443/ws/v5/public?brokerId=9999"
     ws = WsPublicAsync(url=url)
@@ -24,14 +24,18 @@ async def main():
     args.append(arg4)
     await ws.subscribe(args, publicCallback)
     await asyncio.sleep(5)
-    print("-----------------------------------------unsubscribe--------------------------------------------")
+    print(
+        "-----------------------------------------unsubscribe--------------------------------------------"
+    )
     args2 = [arg4]
     await ws.unsubscribe(args2, publicCallback)
     await asyncio.sleep(5)
-    print("-----------------------------------------unsubscribe all--------------------------------------------")
+    print(
+        "-----------------------------------------unsubscribe all--------------------------------------------"
+    )
     args3 = [arg1, arg2, arg3]
     await ws.unsubscribe(args3, publicCallback)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     asyncio.run(main())

@@ -1,12 +1,21 @@
 import unittest
 from okx import PublicData
+
+
 class publicDataTest(unittest.TestCase):
     def setUp(self):
-        api_key = 'your_apiKey'
-        api_secret_key = 'your_secretKey'
-        passphrase = 'your_secretKey'
-        self.publicDataApi = PublicData.PublicAPI(api_key, api_secret_key, passphrase, use_server_time=False, flag='1')
-    '''
+        api_key = "your_apiKey"
+        api_secret_key = "your_secretKey"
+        passphrase = "your_secretKey"
+        self.publicDataApi = PublicData.PublicAPI(
+            api_key,
+            api_secret_key,
+            passphrase,
+            use_server_time=False,
+            flag="1",
+        )
+
+    """
     TestCase For:
     INTEREST_LOAN = '/api/v5/public/interest-rate-loan-quota' #need to add
     UNDERLYING = '/api/v5/public/underlying' #need to add
@@ -49,7 +58,7 @@ class publicDataTest(unittest.TestCase):
     def test_get_mark_price(self):
         print(self.publicDataApi.get_mark_price('SWAP'))
     
-    '''
+    """
     # def test_position_tier(self):
     #     print(self.publicDataApi.get_position_tiers('SWAP','cross',uly='ETH-USD'))
 
@@ -57,7 +66,8 @@ class publicDataTest(unittest.TestCase):
     #     print(self.publicDataApi.get_option_tick_bands(instType='OPTION'))
 
     def test_get_option_trades(self):
-        print(self.publicDataApi.get_option_trades(instFamily='BTC-USD'))
+        print(self.publicDataApi.get_option_trades(instFamily="BTC-USD"))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

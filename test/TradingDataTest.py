@@ -4,11 +4,17 @@ from ..okx import TradingData
 
 class TradingDataTest(unittest.TestCase):
     def setUp(self):
-        api_key = 'your_apiKey'
-        api_secret_key = 'your_secretKey'
-        passphrase = 'your_secretKey'
-        self.TradingDataAPI = TradingData.TradingDataAPI(api_key, api_secret_key, passphrase, use_server_time=False,
-                                                         flag='1')
+        api_key = "your_apiKey"
+        api_secret_key = "your_secretKey"
+        passphrase = "your_secretKey"
+        self.TradingDataAPI = TradingData.TradingDataAPI(
+            api_key,
+            api_secret_key,
+            passphrase,
+            use_server_time=False,
+            flag="1",
+        )
+
     """
       def test_get_support_coins(self):
         print(self.TradingDataAPI.get_support_coin())
@@ -30,8 +36,10 @@ class TradingDataTest(unittest.TestCase):
         print(self.TradingDataAPI.get_interest_volume_strike(ccy="BTC",expTime="20220901"))
     
     """
+
     def test_taker_block_vol(self):
-        print(self.TradingDataAPI.get_taker_flow(ccy='BTC'))
+        print(self.TradingDataAPI.get_taker_flow(ccy="BTC"))
+
 
 if __name__ == "__main__":
     unittest.main()

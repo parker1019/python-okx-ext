@@ -1,13 +1,20 @@
-
 import unittest
 from okx import Funding
 
+
 class FundingTest(unittest.TestCase):
     def setUp(self):
-        api_key = 'your_apiKey'
-        api_secret_key = 'your_secretKey'
-        passphrase = 'your_secretKey'
-        self.FundingAPI = Funding.FundingAPI(api_key, api_secret_key, passphrase, use_server_time=False, flag='0')
+        api_key = "your_apiKey"
+        api_secret_key = "your_secretKey"
+        passphrase = "your_secretKey"
+        self.FundingAPI = Funding.FundingAPI(
+            api_key,
+            api_secret_key,
+            passphrase,
+            use_server_time=False,
+            flag="0",
+        )
+
     """
     CANCEL_WITHDRAWAL = '/api/v5/asset/cancel-withdrawal' #need add
     CONVERT_DUST_ASSETS = '/api/v5/asset/convert-dust-assets' #need add
@@ -78,7 +85,16 @@ class FundingTest(unittest.TestCase):
     #     print(self.FundingAPI.get_deposit_history())
 
     def test_withdrawal(self):
-        print(self.FundingAPI.withdrawal(ccy='USDT',amt='1',dest='3',toAddr='18740405107',areaCode='86'))
+        print(
+            self.FundingAPI.withdrawal(
+                ccy="USDT",
+                amt="1",
+                dest="3",
+                toAddr="18740405107",
+                areaCode="86",
+            )
+        )
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

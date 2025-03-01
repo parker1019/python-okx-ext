@@ -10,11 +10,20 @@ def initLoginParams(useServerTime: bool, apiKey, passphrase, secretKey):
     timestamp = getLocalTime()
     if useServerTime:
         timestamp = getServerTime()
-    message = str(timestamp) + 'GET' + '/users/self/verify'
-    mac = hmac.new(bytes(secretKey, encoding='utf8'), bytes(message, encoding='utf-8'), digestmod='sha256')
+    message = str(timestamp) + "GET" + "/users/self/verify"
+    mac = hmac.new(
+        bytes(secretKey, encoding="utf8"),
+        bytes(message, encoding="utf-8"),
+        digestmod="sha256",
+    )
     d = mac.digest()
     sign = base64.b64encode(d)
-    arg = {"apiKey": apiKey, "passphrase": passphrase, "timestamp": timestamp, "sign": sign.decode("utf-8")}
+    arg = {
+        "apiKey": apiKey,
+        "passphrase": passphrase,
+        "timestamp": timestamp,
+        "sign": sign.decode("utf-8"),
+    }
     payload = {"op": "login", "args": [arg]}
     return json.dumps(payload)
 
@@ -26,7 +35,7 @@ def isNotBlankStr(param: str) -> bool:
 def getParamKey(arg: dict) -> str:
     s = ""
     for k in arg:
-        if k == 'channel':
+        if k == "channel":
             continue
         s = s + "@" + arg.get(k)
     return s
@@ -45,7 +54,7 @@ def initSubscribeSet(arg: dict) -> set:
 
 def checkSocketParams(args: list, channelArgs, channelParamMap):
     for arg in args:
-        channel = arg['channel'].strip()
+        channel = arg["channel"].strip()
         if ~isNotBlankStr(channel):
             raise ValueError("channel must not none")
         argSet = channelParamMap.get(channel, set())
@@ -59,7 +68,9 @@ def checkSocketParams(args: list, channelArgs, channelParamMap):
         p = {}
         for k in arg:
             p[k.strip()] = arg.get(k).strip()
-        channelParamMap[channel] = channelParamMap.get(channel, set()) | validParams
+        channelParamMap[channel] = (
+            channelParamMap.get(channel, set()) | validParams
+        )
         if channel not in channelArgs:
             channelArgs[channel] = []
         channelArgs[channel].append(p)
@@ -69,7 +80,7 @@ def getServerTime():
     url = "https://www.okx.com/api/v5/public/time"
     response = requests.get(url)
     if response.status_code == 200:
-        return response.json()['data'][0]['ts']
+        return response.json()["data"][0]["ts"]
     else:
         return ""
 

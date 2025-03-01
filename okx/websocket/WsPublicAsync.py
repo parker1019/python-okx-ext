@@ -26,19 +26,13 @@ class WsPublicAsync:
 
     async def subscribe(self, params: list, callback):
         self.callback = callback
-        payload = json.dumps({
-            "op": "subscribe",
-            "args": params
-        })
+        payload = json.dumps({"op": "subscribe", "args": params})
         await self.websocket.send(payload)
         # await self.consume()
 
     async def unsubscribe(self, params: list, callback):
         self.callback = callback
-        payload = json.dumps({
-            "op": "unsubscribe",
-            "args": params
-        })
+        payload = json.dumps({"op": "unsubscribe", "args": params})
         logger.info(f"unsubscribe: {payload}")
         await self.websocket.send(payload)
 
