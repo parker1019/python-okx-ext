@@ -1,12 +1,19 @@
-
 import unittest
 from okx import BlockTrading
+
+
 class BlockTradingTest(unittest.TestCase):
     def setUp(self):
-        api_key = 'your_apiKey'
-        api_secret_key = 'your_secretKey'
-        passphrase = 'your_secretKey'
-        self.BlockTradingAPI = BlockTrading.BlockTradingAPI(api_key, api_secret_key, passphrase, use_server_time=False, flag='1')
+        api_key = "your_apiKey"
+        api_secret_key = "your_secretKey"
+        passphrase = "your_secretKey"
+        self.BlockTradingAPI = BlockTrading.BlockTradingAPI(
+            api_key,
+            api_secret_key,
+            passphrase,
+            use_server_time=False,
+            flag="1",
+        )
 
     """
     def test_get_counter_parties(self):
@@ -41,7 +48,6 @@ class BlockTradingTest(unittest.TestCase):
         print(self.BlockTradingAPI.get_trades())
     """
 
-
     # def test_get_public_trades(self):
     #     print(self.BlockTradingAPI.get_public_trades())
 
@@ -49,16 +55,25 @@ class BlockTradingTest(unittest.TestCase):
     #     print(self.BlockTradingAPI.get_quote_products())
 
     def test_create_rfqs(self):
-        counterparties=['8924']
-        legs =[{
-            'instId':"BTC-USDT",
-            'sz':'25',
-            'side':'buy',
-            'posSide':'net',
-            'tdMode':'cross',
-            'ccy':'USDT'
-        }]
-        print(self.BlockTradingAPI.create_rfq(counterparties,allowPartialExecution='true',tag='1234',legs = legs))
+        counterparties = ["8924"]
+        legs = [
+            {
+                "instId": "BTC-USDT",
+                "sz": "25",
+                "side": "buy",
+                "posSide": "net",
+                "tdMode": "cross",
+                "ccy": "USDT",
+            }
+        ]
+        print(
+            self.BlockTradingAPI.create_rfq(
+                counterparties,
+                allowPartialExecution="true",
+                tag="1234",
+                legs=legs,
+            )
+        )
 
     # def test_execute_quotes(self):
     #     legs = [{
@@ -82,6 +97,5 @@ class BlockTradingTest(unittest.TestCase):
     #     print(self.BlockTradingAPI.get_trades())
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -5,10 +5,12 @@ from okx import Trade
 
 class TradeTest(unittest.TestCase):
     def setUp(self):
-        api_key = 'your_apiKey'
-        api_secret_key = 'your_secretKey'
-        passphrase = 'your_secretKey'
-        self.tradeApi = Trade.TradeAPI(api_key, api_secret_key, passphrase, False, '1')
+        api_key = "your_apiKey"
+        api_secret_key = "your_secretKey"
+        passphrase = "your_secretKey"
+        self.tradeApi = Trade.TradeAPI(
+            api_key, api_secret_key, passphrase, False, "1"
+        )
 
     # # """
     # def test_place_order(self):
@@ -126,7 +128,10 @@ class TradeTest(unittest.TestCase):
     # def test_get_order_histry_archive(self):
     #     print(self.tradeApi.orders_history_archive("SPOT"))
     def test_get_fills(self):
-        print(self.tradeApi.get_fills(begin='1717045609000',end='1717045609100'))
+        print(
+            self.tradeApi.get_fills(begin="1717045609000", end="1717045609100")
+        )
+
     # def test_get_fills_history(self):
     #     print(self.tradeApi.get_fills_history("SPOT"))
     # def test_get_order_algo_pending(self):
@@ -242,5 +247,5 @@ class TradeTest(unittest.TestCase):
     #     print(self.tradeApi.close_positions(instId="BTC-USDT-SWAP", mgnMode="cross",clOrdId='1213124'))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

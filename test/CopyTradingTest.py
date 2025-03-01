@@ -1,13 +1,19 @@
 import unittest
 from okx import CopyTrading
 
+
 class CopyTradingTest(unittest.TestCase):
     def setUp(self):
-        api_key = 'your_apiKey'
-        api_secret_key = 'your_secretKey'
-        passphrase = 'your_secretKey'
-        self.StackingAPI = CopyTrading.CopyTradingAPI(api_key, api_secret_key, passphrase, use_server_time=False,
-                                                      flag='0')
+        api_key = "your_apiKey"
+        api_secret_key = "your_secretKey"
+        passphrase = "your_secretKey"
+        self.StackingAPI = CopyTrading.CopyTradingAPI(
+            api_key,
+            api_secret_key,
+            passphrase,
+            use_server_time=False,
+            flag="0",
+        )
 
     # def test_get_existing_leading_positions(self):
     #     print(self.StackingAPI.get_existing_leading_positions(instId='DOGE-USDT-SWAP'))
@@ -35,6 +41,7 @@ class CopyTradingTest(unittest.TestCase):
     #
     def test_get_unrealized_profit_sharing_details(self):
         print(self.StackingAPI.get_unrealized_profit_sharing_details())
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,8 +1,7 @@
-
 import unittest
 from okx import MarketData
 
-'''
+"""
 ORACLE = '/api/v5/market/open-oracle' #need to update? if it is open oracle
 INDEX_COMPONENTS = '/api/v5/market/index-components' #need to add
 EXCHANGE_RATE = '/api/v5/market/exchange-rate' #need to add
@@ -10,15 +9,23 @@ HISTORY_TRADES = '/api/v5/market/history-trades' #need to add
 BLOCK_TICKERS = '/api/v5/market/block-tickers' #need to add
 BLOCK_TICKER = '/api/v5/market/block-ticker'#need to add
 BLOCK_TRADES = '/api/v5/market/block-trades'#need to add
-'''
+"""
+
 
 class MarketAPITest(unittest.TestCase):
     def setUp(self):
-        api_key = 'your_apiKey'
-        api_secret_key = 'your_secretKey'
-        passphrase = 'your_secretKey'
-        self.MarketApi = MarketData.MarketAPI(api_key, api_secret_key, passphrase, use_server_time=False, flag='1')
-    '''
+        api_key = "your_apiKey"
+        api_secret_key = "your_secretKey"
+        passphrase = "your_secretKey"
+        self.MarketApi = MarketData.MarketAPI(
+            api_key,
+            api_secret_key,
+            passphrase,
+            use_server_time=False,
+            flag="1",
+        )
+
+    """
     
     def test_oracle(self):
         print(self.MarketApi.get_oracle())
@@ -56,13 +63,13 @@ class MarketAPITest(unittest.TestCase):
         print(self.MarketApi.get_history_trades('BTC-USDT'))
     def test_get_platform_24_volume(self):
         print(self.MarketApi.get_volume())
-    '''
+    """
 
     # def test_get_order_lite_book(self):
     #     print(self.MarketApi.get_order_lite_book(instId='BTC-USDT'))
 
     def test_get_option_trades(self):
-        print(self.MarketApi.get_option_trades(instFamily='BTC-USD'))
+        print(self.MarketApi.get_option_trades(instFamily="BTC-USD"))
 
 
 if __name__ == "__main__":

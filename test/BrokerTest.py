@@ -1,15 +1,21 @@
-
 import unittest
 from okx import NDBroker
 
+
 class BrokerTest(unittest.TestCase):
     def setUp(self):
-        api_key = 'your_apiKey'
-        api_secret_key = 'your_secretKey'
-        passphrase = 'your_secretKey'
-        self.NDBrokerAPI = NDBroker.NDBrokerAPI(api_key, api_secret_key, passphrase, use_server_time=False, flag='1')
+        api_key = "your_apiKey"
+        api_secret_key = "your_secretKey"
+        passphrase = "your_secretKey"
+        self.NDBrokerAPI = NDBroker.NDBrokerAPI(
+            api_key,
+            api_secret_key,
+            passphrase,
+            use_server_time=False,
+            flag="1",
+        )
 
-    '''
+    """
     def test_get_broker_info(self):
         result = self.NDBrokerAPI.get_broker_info()
         print(result)
@@ -53,13 +59,18 @@ class BrokerTest(unittest.TestCase):
     def test_rebate_daily(self):
         print(self.NDBrokerAPI.get_rebate_daily())
     
-    '''
+    """
 
     # def test_get_subaccount_info(self):
     #     print(self.NDBrokerAPI.get_subaccount_info())
 
     def test_set_nd_subaccount_asset_in_demo_trading(self):
-        print(self.NDBrokerAPI.set_nd_subaccount_asset_in_demo_trading(subAcct="zihaond4",ccy = "BTC"))
+        print(
+            self.NDBrokerAPI.set_nd_subaccount_asset_in_demo_trading(
+                subAcct="zihaond4", ccy="BTC"
+            )
+        )
 
-if __name__ == '__main__':
-  unittest.main()
+
+if __name__ == "__main__":
+    unittest.main()

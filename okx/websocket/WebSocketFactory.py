@@ -19,7 +19,9 @@ class WebSocketFactory:
         ssl_context = ssl.create_default_context()
         ssl_context.load_verify_locations(certifi.where())
         try:
-            self.websocket = await websockets.connect(self.url, ssl=ssl_context)
+            self.websocket = await websockets.connect(
+                self.url, ssl=ssl_context
+            )
             logger.info("WebSocket connection established.")
             return self.websocket
         except Exception as e:

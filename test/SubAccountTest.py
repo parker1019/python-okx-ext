@@ -1,13 +1,21 @@
 import unittest
 from okx import SubAccount
 
+
 class SubAccountTest(unittest.TestCase):
     def setUp(self):
-        api_key = 'your_apiKey'
-        api_secret_key = 'your_secretKey'
-        passphrase = 'your_secretKey'
-        self.SubAccountApi = SubAccount.SubAccountAPI(api_key, api_secret_key, passphrase, use_server_time=False, flag='1')
-    '''
+        api_key = "your_apiKey"
+        api_secret_key = "your_secretKey"
+        passphrase = "your_secretKey"
+        self.SubAccountApi = SubAccount.SubAccountAPI(
+            api_key,
+            api_secret_key,
+            passphrase,
+            use_server_time=False,
+            flag="1",
+        )
+
+    """
     ENTRUST_SUBACCOUNT_LIST = '/api/v5/users/entrust-subaccount-list' #need to add
     SET_TRSNSFER_OUT = '/api/v5/users/subaccount/set-transfer-out' #need to add
     GET_ASSET_SUBACCOUNT_BALANCE = '/api/v5/asset/subaccount/balances' #need to add
@@ -34,7 +42,7 @@ class SubAccountTest(unittest.TestCase):
     def test_subaccount_transfer(self):
         print(self.SubAccountApi.subAccount_transfer(ccy = 'BTC', amt = '1.0', froms= '18', to='18', fromSubAccount='zsynoaff02',toSubAccount = 'unitTest1298'))
 
-    '''
+    """
 
     # def test_get_the_user_affiliate_rebate_information(self):
     #     print(self.SubAccountApi.get_the_user_affiliate_rebate_information(apiKey='3af380a7-72af-4cc6-80d1-4b5a34ea69ad'))
@@ -44,10 +52,15 @@ class SubAccountTest(unittest.TestCase):
     #                                                                              'loanAlloc':'1'}]))
 
     def test_get_sub_account_borrow_interest_and_limit(self):
-        print(self.SubAccountApi.get_sub_account_borrow_interest_and_limit(subAcct='coretrading7'))
+        print(
+            self.SubAccountApi.get_sub_account_borrow_interest_and_limit(
+                subAcct="coretrading7"
+            )
+        )
 
     # def test_get_history_of_managed_subAccount_transfer(self):
     #     print(self.SubAccountApi.get_history_of_managed_subAccount_transfer())
+
 
 if __name__ == "__main__":
     unittest.main()
