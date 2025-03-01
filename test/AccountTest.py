@@ -128,20 +128,6 @@ class AccountTest(unittest.TestCase):
 
     # def test_simulated_margin(self):
     #     print(self.AccountAPI.get_simulated_margin(spotOffsetType='3'))
-    # def test_get_fix_loan_borrowing_limit(self):
-    #     logger.debug(f'{self.AccountAPI.get_fix_loan_borrowing_limit()}')
-    # def test_get_fix_loan_borrowing_quote(self):
-    #     logger.debug(f'{self.AccountAPI.get_fix_loan_borrowing_quote(type="normal")}')
-    # def test_place_fix_loan_borrowing_order(self):
-    #     logger.debug(f'{self.AccountAPI.place_fix_loan_borrowing_order(ccy="BTC", amt="0.1515", maxRate="0.001", term="30D", reborrow=True, reborrowRate="0.01")}')
-    # def test_amend_fix_loan_borrowing_order(self):
-    #     logger.debug(f'{self.AccountAPI.amend_fix_loan_borrowing_order(ordId="2407301043344857",reborrow=True,renewMaxRate="0.01")}')
-    # def test_fix_loan_manual_reborrow(self):
-    #     logger.debug(f'{self.AccountAPI.fix_loan_manual_reborrow(ordId="2407301043344857",maxRate="0.1")}')
-    # def test_repay_fix_loan_borrowing_order(self):
-    #     logger.info(f'{self.AccountAPI.repay_fix_loan_borrowing_order(ordId="2407301054407907")}')
-    # def test_get_fix_loan_borrowing_orders_list(self):
-    #     logger.debug(self.AccountAPI.get_fix_loan_borrowing_orders_list(ordId="2407301054407907"))
 
     # def test_spot_manual_borrow_repay(self):
     #     logger.debug(f'{self.AccountAPI.spot_manual_borrow_repay(ccy="USDT",side="borrow",amt=1)}')
