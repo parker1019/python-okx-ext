@@ -38,7 +38,7 @@ class FundingAPI(OkxClient):
         return self._request_with_params(GET, GET_BALANCES, params)
 
     # Get Non Tradable Assets
-    def get_non_tradable_assets(self, ccy= ""):
+    def get_non_tradable_assets(self, ccy=""):
         params = {"ccy": ccy}
         return self._request_with_params(GET, NON_TRADABLE_ASSETS, params)
 
@@ -79,7 +79,9 @@ class FundingAPI(OkxClient):
         return self._request_with_params(GET, TRANSFER_STATE, params)
 
     # Get Bills Info
-    def get_bills(self, ccy="", type="", clientId="", after="", before="", limit=""):
+    def get_bills(
+        self, ccy="", type="", clientId="", after="", before="", limit=""
+    ):
         params = {
             "ccy": ccy,
             "type": type,
@@ -123,7 +125,15 @@ class FundingAPI(OkxClient):
 
     # Withdrawal
     def withdrawal(
-        self, ccy, amt, dest, toAddr, chain="", areaCode="", rcvrInfo=None, clientId=""
+        self,
+        ccy,
+        amt,
+        dest,
+        toAddr,
+        chain="",
+        areaCode="",
+        rcvrInfo=None,
+        clientId="",
     ):
         params = {
             "ccy": ccy,

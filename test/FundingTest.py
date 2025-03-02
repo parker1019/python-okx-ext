@@ -80,8 +80,11 @@ class FundingTest(unittest.TestCase):
 
     # Test Withdrawal Lightning
     def test_withdrawal_lightning(self):
-        print(self.FundingAPI.withdrawal_lightning("BTC", "jdsnjvhofhenogvne", memo="222"))
-
+        print(
+            self.FundingAPI.withdrawal_lightning(
+                "BTC", "jdsnjvhofhenogvne", memo="222"
+            )
+        )
 
 
 if __name__ == "__main__":
