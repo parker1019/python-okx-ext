@@ -1,3 +1,8 @@
+## Python-okx-ext
+
+[![Download Stats](https://img.shields.io/pypi/dm/python-okx-ext)](https://pypistats.org/packages/python-okx-ext)
+
+
 ### ⚠ Project Continuation Notice
 
 The original project appears to be no longer actively maintained.  
@@ -14,7 +19,7 @@ This is an unofficial Python wrapper for the [OKX exchange v5 API](https://www.o
 If you came here looking to purchase cryptocurrencies from the OKX exchange, please go [here](https://www.okx.com/).
 
 #### Source code
-https://github.com/parker1019/python-okx
+https://github.com/parker1019/python-okx-ext
 
 #### API trading tutorials
 - Spot trading: https://www.okx.com/help/how-can-i-do-spot-trading-with-the-jupyter-notebook
