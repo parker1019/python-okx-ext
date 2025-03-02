@@ -70,8 +70,17 @@ class OkxClient(Client):
         if method == c.GET:
             response = self.get(request_path, headers=header)
         elif method == c.POST:
-            response = self.post(request_path, data=body, headers=header)
+            response = self.post(request_path, content=body, headers=header)
         return response.json()
+
+    def close(self):
+        return super().close()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.close()
 
     def _request_without_params(self, method, request_path):
         return self._request(method, request_path, {})
