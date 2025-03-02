@@ -13,180 +13,283 @@ class AccountTest(unittest.TestCase):
         )
 
     def test_get_instruments(self):
-        print(self.AccountAPI.get_instruments(instType="SPOT"))
+        with self.AccountAPI as account:
+            result = account.get_instruments(instType="SPOT")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_account_balance(self):
-        print(self.AccountAPI.get_account_balance(ccy="USDT"))
+        with self.AccountAPI as account:
+            result = account.get_account_balance(ccy="USDT")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_positions(self):
-        print(self.AccountAPI.get_positions(instType="SWAP"))
+        with self.AccountAPI as account:
+            result = account.get_positions(instType="SWAP")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_positions_history(self):
-        print(self.AccountAPI.get_positions_history(instType="SWAP"))
+        with self.AccountAPI as account:
+            result = account.get_positions_history(instType="SWAP")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_position_risk(self):
-        print(self.AccountAPI.get_position_risk(instType="SWAP"))
+        with self.AccountAPI as account:
+            result = account.get_position_risk(instType="SWAP")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_account_bills(self):
-        print(self.AccountAPI.get_account_bills(instType="SPOT"))
+        with self.AccountAPI as account:
+            result = account.get_account_bills(instType="SPOT")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_account_bills_archive(self):
-        print(
-            self.AccountAPI.get_account_bills_archive(
+        with self.AccountAPI as account:
+            result = account.get_account_bills_archive(
                 begin="1715780962300", end="1716998400000"
             )
-        )
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_account_config(self):
-        print(self.AccountAPI.get_account_config())
+        with self.AccountAPI as account:
+            result = account.get_account_config()
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_set_position_mode(self):
-        print(self.AccountAPI.set_position_mode(posMode="long_short_mode"))
+        with self.AccountAPI as account:
+            result = account.set_position_mode(posMode="net_mode")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_set_leverage(self):
-        print(
-            self.AccountAPI.set_leverage(
+        with self.AccountAPI as account:
+            result = account.set_leverage(
                 lever="5", mgnMode="isolated", instId="BTC-USDT"
             )
-        )
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_max_order_size(self):
-        print(
-            self.AccountAPI.get_max_order_size(
+        with self.AccountAPI as account:
+            result = account.get_max_order_size(
                 instId="BTC-USDT", tdMode="cash"
             )
-        )
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_max_avail_size(self):
-        print(
-            self.AccountAPI.get_max_avail_size(
+        with self.AccountAPI as account:
+            result = account.get_max_avail_size(
                 instId="BTC-USDT", tdMode="cash"
             )
-        )
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_adjustment_margin(self):
-        print(
-            self.AccountAPI.adjustment_margin(
-                instId="BTC-USDT", posSide="net", type="add", amt="1"
+        with self.AccountAPI as account:
+            result = account.adjustment_margin(
+                instId="BTC-USDT-SWAP", posSide="net", type="add", amt="1"
             )
-        )
+            status_code = result.get("code")
+            self.assertEqual(
+                status_code, "59300"
+            )  # 59300: The position is not found
 
     def test_get_leverage(self):
-        print(self.AccountAPI.get_leverage(mgnMode="cross", ccy="USDT"))
+        with self.AccountAPI as account:
+            result = account.get_leverage(mgnMode="cross", ccy="USDT")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_max_loan(self):
-        print(self.AccountAPI.get_max_loan(mgnMode="isolated", ccy="USDT"))
+        with self.AccountAPI as account:
+            result = account.get_max_loan(
+                mgnMode="cross", instId="BTC-USDT", ccy="BTC", mgnCcy="USDT"
+            )
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_fee_rates(self):
-        print(self.AccountAPI.get_fee_rates(instType="SPOT"))
+        with self.AccountAPI as account:
+            result = account.get_fee_rates(instType="SPOT")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_interest_accrued(self):
-        print(self.AccountAPI.get_interest_accrued())
+        with self.AccountAPI as account:
+            result = account.get_interest_accrued()
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_interest_rate(self):
-        print(self.AccountAPI.get_interest_rate(ccy="USDT"))
+        with self.AccountAPI as account:
+            result = account.get_interest_rate(ccy="USDT")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_set_greeks(self):
-        print(self.AccountAPI.set_greeks(greeksType="BS"))
+        with self.AccountAPI as account:
+            result = account.set_greeks(greeksType="BS")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_set_isolated_mode(self):
-        print(
-            self.AccountAPI.set_isolated_mode(
+        with self.AccountAPI as account:
+            result = account.set_isolated_mode(
                 isoMode="automatic", type="MARGIN"
             )
-        )
+            status_code = result.get("code")
+            self.assertEqual(
+                status_code, "51010"
+            )  # 51010: The account mode does not support this operation
 
     def test_get_max_withdrawal(self):
-        print(self.AccountAPI.get_max_withdrawal(ccy="USDT"))
+        with self.AccountAPI as account:
+            result = account.get_max_withdrawal(ccy="USDT")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_account_position_risk(self):
-        print(self.AccountAPI.get_account_position_risk())
+        with self.AccountAPI as account:
+            result = account.get_account_position_risk()
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_interest_limits(self):
-        print(self.AccountAPI.get_interest_limits(ccy="USDT"))
+        with self.AccountAPI as account:
+            result = account.get_interest_limits(ccy="USDT")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_spot_manual_borrow_repay(self):
-        logger.debug(
-            f'{self.AccountAPI.spot_manual_borrow_repay(ccy="USDT", side="borrow", amt=1)}'
-        )
+        with self.AccountAPI as account:
+            result = account.spot_manual_borrow_repay(
+                ccy="USDT", side="borrow", amt=1
+            )
+            status_code = result.get("code")
+            self.assertEqual(
+                status_code, "59410"
+            )  # 59410: The account does not support loan
 
     def test_set_auto_repay(self):
-        logger.info(f"{self.AccountAPI.set_auto_repay(autoRepay=True)}")
+        with self.AccountAPI as account:
+            result = account.set_auto_repay(autoRepay=True)
+            status_code = result.get("code")
+            self.assertEqual(
+                status_code, "51010"
+            )  # 51010: The account mode does not support this operation
 
     def test_spot_borrow_repay_history(self):
-        logger.debug(
-            self.AccountAPI.spot_borrow_repay_history(
+        with self.AccountAPI as account:
+            result = account.spot_borrow_repay_history(
                 ccy="USDT", type="auto_borrow", after="1597026383085"
             )
-        )
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_position_builder(self):
-        print("Both real and virtual positions and assets are calculated")
-        sim_pos = [
-            {"instId": "BTC-USDT-SWAP", "pos": "10"},
-            {"instId": "BTC-USDT-SWAP", "pos": "10"},
-        ]
-        sim_asset = [{"ccy": "USDT", "amt": "100"}]
-        print(
-            self.AccountAPI.position_builder(
+        with self.AccountAPI as account:
+            sim_pos = [
+                {"instId": "BTC-USDT-SWAP", "pos": "10", "avgPx": "100000"},
+                {"instId": "ETH-USDT-SWAP", "pos": "10", "avgPx": "3000"},
+            ]
+            sim_asset = [{"ccy": "USDT", "amt": "1000000"}]
+
+            result = account.position_builder(
                 inclRealPosAndEq=False,
                 simPos=sim_pos,
                 simAsset=sim_asset,
                 greeksType="CASH",
             )
-        )
-
-        print("Only existing real positions are calculated")
-        print(
-            self.AccountAPI.position_builder(
-                inclRealPosAndEq=True, greeksType="CASH"
-            )
-        )
-
-        print("Only virtual positions are calculated")
-        print(
-            self.AccountAPI.position_builder(
-                inclRealPosAndEq=False, simPos=sim_pos
-            )
-        )
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_greeks(self):
-        print(self.AccountAPI.get_greeks(ccy="USDT"))
+        with self.AccountAPI as account:
+            result = account.get_greeks(ccy="USDT")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_account_position_tiers(self):
-        print(self.AccountAPI.get_account_position_tiers(instType="SWAP"))
+        with self.AccountAPI as account:
+            result = account.get_account_position_tiers(
+                instType="SWAP", instFamily="BTC-USDT"
+            )
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_activate_option(self):
-        print(self.AccountAPI.activate_option())
+        with self.AccountAPI as account:
+            result = account.activate_option()
+            status_code = result.get("code")
+            self.assertEqual(
+                status_code, "50050"
+            )  # 50050: The account has already been activated
 
     def test_set_auto_loan(self):
-        print(self.AccountAPI.set_auto_loan(autoLoan="true"))
+        with self.AccountAPI as account:
+            result = account.set_auto_loan(autoLoan="true")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_set_account_level(self):
-        print(self.AccountAPI.set_account_level(acctLv="1"))
+        with self.AccountAPI as account:
+            result = account.set_account_level(acctLv="2")
+            status_code = result.get("code")
+            self.assertEqual(
+                status_code, "59001"
+            )  # 59001: The account have loan
 
     def test_get_simulated_margin(self):
-        print(self.AccountAPI.get_simulated_margin(instType="SWAP"))
+        with self.AccountAPI as account:
+            result = account.get_simulated_margin(instType="SWAP")
+            status_code = result.get("code")
+            self.assertEqual(
+                status_code, 404
+            )  # 404: The interface is under maintenance
 
     def test_borrow_repay(self):
-        print(
-            self.AccountAPI.borrow_repay(ccy="BTC", side="borrow", amt="1.0")
-        )
+        with self.AccountAPI as account:
+            result = account.borrow_repay(ccy="BTC", side="borrow", amt="1.0")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_borrow_repay_history(self):
-        print(self.AccountAPI.borrow_repay_history(ccy="BTC"))
+        with self.AccountAPI as account:
+            result = account.borrow_repay_history(ccy="BTC")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_vip_interest_accrued_data(self):
-        print(self.AccountAPI.get_vip_interest_accrued_data(ccy="BTC"))
+        with self.AccountAPI as account:
+            result = account.get_vip_interest_accrued_data(ccy="BTC")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_vip_interest_deducted_data(self):
-        print(self.AccountAPI.get_vip_interest_deducted_data(ccy="BTC"))
+        with self.AccountAPI as account:
+            result = account.get_vip_interest_deducted_data(ccy="BTC")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_vip_loan_order_list(self):
-        print(self.AccountAPI.get_vip_loan_order_list(ccy="BTC"))
+        with self.AccountAPI as account:
+            result = account.get_vip_loan_order_list(ccy="BTC")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_vip_loan_order_detail(self):
-        print(self.AccountAPI.get_vip_loan_order_detail(ccy="BTC", ordId="1"))
+        with self.AccountAPI as account:
+            result = account.get_vip_loan_order_detail(ccy="BTC", ordId="1")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
 
 if __name__ == "__main__":
