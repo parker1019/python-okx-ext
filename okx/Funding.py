@@ -216,6 +216,8 @@ class FundingAPI(OkxClient):
         return self._request_with_params(GET, DEPOSIT_LIGHTNING, params)
 
     # Withdrawal Lightning
-    def withdrawal_lightning(self, ccy: str, invoice: str, memo: str = ""):
-        params = {"ccy": ccy, "invoice": invoice, "memo": memo}
+    def withdrawal_lightning(
+        self, ccy: str, invoice: str, rcvrInfo: Dict[str, str] = {}
+    ):
+        params = {"ccy": ccy, "invoice": invoice, "rcvrInfo": rcvrInfo}
         return self._request_with_params(POST, WITHDRAWAL_LIGHTNING, params)
