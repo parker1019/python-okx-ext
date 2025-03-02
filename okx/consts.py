@@ -76,30 +76,30 @@ GET_VIP_LOAN_ORDER_LIST = "/api/v5/account/vip-loan-order-list"
 GET_VIP_LOAN_ORDER_DETAIL = "/api/v5/account/vip-loan-order-detail"
 
 # funding-complete-testcomplete
-NON_TRADABLE_ASSETS = "/api/v5/asset/non-tradable-assets"
-DEPOSIT_ADDRESS = "/api/v5/asset/deposit-address"
+CURRENCY_INFO = "/api/v5/asset/currencies"
 GET_BALANCES = "/api/v5/asset/balances"
+NON_TRADABLE_ASSETS = "/api/v5/asset/non-tradable-assets"
+ASSET_VALUATION = "/api/v5/asset/asset-valuation"
 FUNDS_TRANSFER = "/api/v5/asset/transfer"
 TRANSFER_STATE = "/api/v5/asset/transfer-state"
-WITHDRAWAL_COIN = "/api/v5/asset/withdrawal"
-DEPOSIT_HISTORY = "/api/v5/asset/deposit-history"
-CURRENCY_INFO = "/api/v5/asset/currencies"
-PURCHASE_REDEMPT = "/api/v5/asset/purchase_redempt"
 BILLS_INFO = "/api/v5/asset/bills"
+DEPOSIT_ADDRESS = "/api/v5/asset/deposit-address"
+DEPOSIT_HISTORY = "/api/v5/asset/deposit-history"
+WITHDRAWAL_COIN = "/api/v5/asset/withdrawal"
+CANCEL_WITHDRAWAL = "/api/v5/asset/cancel-withdrawal"
+WITHDRAWAL_HISTORY = "/api/v5/asset/withdrawal-history"
+GET_DEPOSIT_WITHDRAW_STATUS = "/api/v5/asset/deposit-withdraw-status"
+EXCHANGE_LIST = "/api/v5/asset/exchange-list"  # Need to add
+MONTHLY_STATEMENT = "/api/v5/asset/monthly-statement"  # Need to add
 DEPOSIT_LIGHTNING = "/api/v5/asset/deposit-lightning"
 WITHDRAWAL_LIGHTNING = "/api/v5/asset/withdrawal-lightning"
-CANCEL_WITHDRAWAL = "/api/v5/asset/cancel-withdrawal"  # need add
-WITHDRAWAL_HISTORY = "/api/v5/asset/withdrawal-history"
-CONVERT_DUST_ASSETS = "/api/v5/asset/convert-dust-assets"  # need add
-ASSET_VALUATION = "/api/v5/asset/asset-valuation"  # need add
-SET_LENDING_RATE = "/api/v5/asset/set-lending-rate"
-LENDING_HISTORY = "/api/v5/asset/lending-history"
-LENDING_RATE_HISTORY = "/api/v5/asset/lending-rate-history"
-LENDING_RATE_SUMMARY = "/api/v5/asset/lending-rate-summary"
-GET_SAVING_BALANCE = "/api/v5/asset/saving-balance"  # need to add
-GET_WITHDRAWAL_HISTORY = "/api/v5/asset/withdrawal-history"
-GET_NON_TRADABLE_ASSETS = "/api/v5/asset/non-tradable-assets"
-GET_DEPOSIT_WITHDrAW_STATUS = "/api/v5/asset/deposit-withdraw-status"
+
+# Convert-Complete
+GET_CURRENCIES = "/api/v5/asset/convert/currencies"
+GET_CURRENCY_PAIR = "/api/v5/asset/convert/currency-pair"
+ESTIMATE_QUOTE = "/api/v5/asset/convert/estimate-quote"
+CONVERT_TRADE = "/api/v5/asset/convert/trade"
+CONVERT_HISTORY = "/api/v5/asset/convert/history"
 
 
 # Market Data-Complete-testComplete
@@ -236,13 +236,6 @@ MODIFY_SUBACCOUNT_DEPOSIT_ADDRESS = (
     "/api/v5/asset/broker/nd/modify-subaccount-deposit-address"
 )
 GET_SUBACCOUNT_DEPOSIT = "/api/v5/asset/broker/nd/subaccount-deposit-address"
-
-# Convert-Complete
-GET_CURRENCIES = "/api/v5/asset/convert/currencies"
-GET_CURRENCY_PAIR = "/api/v5/asset/convert/currency-pair"
-ESTIMATE_QUOTE = "/api/v5/asset/convert/estimate-quote"
-CONVERT_TRADE = "/api/v5/asset/convert/trade"
-CONVERT_HISTORY = "/api/v5/asset/convert/history"
 
 # FDBroker -completed
 FD_GET_REBATE_PER_ORDERS = "/api/v5/broker/fd/rebate-per-orders"
