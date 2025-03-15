@@ -176,4 +176,4 @@ class MarketAPI(OkxClient):
     # - Get option trades
     def get_option_trades(self, instFamily=""):
         params = {"instFamily": instFamily}
-        return self._request_with_params(GET, GET_OPTION_TRADES, params)
+        return self._request_with_params(GET, INSTRUMENT_FAMILY_TRADES, params)

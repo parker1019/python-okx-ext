@@ -1,8 +1,9 @@
 import unittest
+from loguru import logger
 from okx import PublicData
 
 
-class publicDataTest(unittest.TestCase):
+class PublicDataTest(unittest.TestCase):
     def setUp(self):
         api_key = "your_apiKey"
         api_secret_key = "your_secretKey"
@@ -11,62 +12,158 @@ class publicDataTest(unittest.TestCase):
             api_key,
             api_secret_key,
             passphrase,
-            use_server_time=False,
             flag="1",
         )
 
-    """
-    TestCase For:
-    INTEREST_LOAN = '/api/v5/public/interest-rate-loan-quota' #need to add
-    UNDERLYING = '/api/v5/public/underlying' #need to add
-    VIP_INTEREST_RATE_LOAN_QUOTA = '/api/v5/public/vip-interest-rate-loan-quota' #need to add
-    INSURANCE_FUND = '/api/v5/public/insurance-fund'#need to add
-    CONVERT_CONTRACT_COIN = '/api/v5/public/convert-contract-coin' #need to add
-    def test_interest_loan(self):
-        print(self.publicDataApi.get_interest_rate_loan_quota())
-    def test_get_underlying(self):
-        print(self.publicDataApi.get_underlying("SWAP"))
-    def test_get_vip_loan(self):
-        print(self.publicDataApi.get_vip_interest_rate_loan_quota())
-    def test_insurance_fund(self):
-        print(self.publicDataApi.get_insurance_fund("SWAP",uly= "BTC-USD"))
-    def test_convert_contract_coin(self):
-        print(self.publicDataApi.get_convert_contract_coin(instId="BTC-USD-SWAP",sz = "1",px = "27000"))
     def test_get_instruments(self):
-        print(self.publicDataApi.get_instruments("SPOT"))
-    def test_delivery_exercise_history(self):
-        print(self.publicDataApi.get_deliver_history("FUTURES","BTC-USD"))
-    def test_get_open_interest(self):
-        print(self.publicDataApi.get_open_interest("SWAP"))
+        with self.publicDataApi as api:
+            result = api.get_instruments(instType="SPOT")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
+    def test_get_estimated_price(self):
+        with self.publicDataApi as api:
+            result = api.get_estimated_price(instId="BTCUSD-20250316")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
+    def test_get_delivery_exercise_history(self):
+        with self.publicDataApi as api:
+            result = api.get_delivery_exercise_history(
+                instType="FUTURES", uly="BTC-USD"
+            )
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
+    def test_get_estimated_settlement_info(self):
+        with self.publicDataApi as api:
+            result = api.get_estimated_settlement_info(instId="BTC-USD-SWAP")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
+    def test_get_settlement_history(self):
+        with self.publicDataApi as api:
+            result = api.get_settlement_history(instFamily="BTC-USD")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
     def test_get_funding_rate(self):
-        print(self.publicDataApi.get_funding_rate("BTC-USD-SWAP"))
-    def test_get_funding_rate_history(self):
-        print(self.publicDataApi.funding_rate_history('BTC-USD-SWAP'))
-    def test_get_price_limited(self):
-        print(self.publicDataApi.get_price_limit("BTC-USD-SWAP"))
+        with self.publicDataApi as api:
+            result = api.get_funding_rate(instId="BTC-USD-SWAP")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
+    def test_funding_rate_history(self):
+        with self.publicDataApi as api:
+            result = api.funding_rate_history(instId="BTC-USD-SWAP")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
+    def test_get_open_interest(self):
+        with self.publicDataApi as api:
+            result = api.get_open_interest(instType="SWAP")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
+    def test_get_price_limit(self):
+        with self.publicDataApi as api:
+            result = api.get_price_limit(instId="BTC-USD-SWAP")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
     def test_get_opt_summary(self):
-        print(self.publicDataApi.get_opt_summary('BTC-USD'))
+        with self.publicDataApi as api:
+            result = api.get_opt_summary(uly="BTC-USD")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
-    def test_estimate_price(self):
-        print(self.publicDataApi.get_estimated_price("BTC-USD-220831-17000-P"))
-    def test_get_discount_rate_interest(self):
-        print(self.publicDataApi.discount_interest_free_quota(ccy='ETH'))
-    def test_get_systime(self):
-        print(self.publicDataApi.get_system_time())
-    def test_get_liquid_order(self):
-        print(self.publicDataApi.get_liquidation_orders("SWAP",uly='BTC-USD',state='filled'))
+    def test_discount_interest_free_quota(self):
+        with self.publicDataApi as api:
+            result = api.discount_interest_free_quota(ccy="ETH")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
+    def test_get_system_time(self):
+        with self.publicDataApi as api:
+            result = api.get_system_time()
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
     def test_get_mark_price(self):
-        print(self.publicDataApi.get_mark_price('SWAP'))
-    
-    """
-    # def test_position_tier(self):
-    #     print(self.publicDataApi.get_position_tiers('SWAP','cross',uly='ETH-USD'))
+        with self.publicDataApi as api:
+            result = api.get_mark_price(instType="SWAP")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
-    # def test_get_option_tickBands(self):
-    #     print(self.publicDataApi.get_option_tick_bands(instType='OPTION'))
+    def test_get_position_tiers(self):
+        with self.publicDataApi as api:
+            result = api.get_position_tiers(
+                instType="SWAP", tdMode="cross", uly="ETH-USD"
+            )
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
+    def test_get_interest_rate_loan_quota(self):
+        with self.publicDataApi as api:
+            result = api.get_interest_rate_loan_quota()
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
+    def test_get_underlying(self):
+        with self.publicDataApi as api:
+            result = api.get_underlying(instType="SWAP")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
+    def test_get_insurance_fund(self):
+        with self.publicDataApi as api:
+            result = api.get_insurance_fund(instType="SWAP", uly="BTC-USD")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
+    def test_get_convert_contract_coin(self):
+        with self.publicDataApi as api:
+            result = api.get_convert_contract_coin(
+                instId="BTC-USD-SWAP", sz="1", px="27000"
+            )
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
+    def test_get_option_tickBands(self):
+        with self.publicDataApi as api:
+            result = api.get_option_tickBands(instType="OPTION")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
+    def test_get_premium_history(self):
+        with self.publicDataApi as api:
+            result = api.get_premium_history(instId="BTC-USD-SWAP")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
+    def test_get_economic_calendar(self):
+        with self.publicDataApi as api:
+            result = api.get_economic_calendar()
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
     def test_get_option_trades(self):
-        print(self.publicDataApi.get_option_trades(instFamily="BTC-USD"))
+        with self.publicDataApi as api:
+            result = api.get_option_trades(instFamily="BTC-USD")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
+    def test_get_block_trades(self):
+        with self.publicDataApi as api:
+            result = api.get_block_trades(instId="BTC-USD-SWAP")
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
+
+    def test_get_vip_interest_rate_loan_quota(self):
+        with self.publicDataApi as api:
+            result = api.get_vip_interest_rate_loan_quota()
+            status_code = result.get("code")
+            self.assertEqual(status_code, "0")
 
 
 if __name__ == "__main__":

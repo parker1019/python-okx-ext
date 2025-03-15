@@ -121,31 +121,36 @@ BLOCK_TICKERS = "/api/v5/market/block-tickers"  # need to add
 BLOCK_TICKER = "/api/v5/market/block-ticker"  # need to add
 BLOCK_TRADES = "/api/v5/market/block-trades"  # need to add
 GET_ORDER_LITE_BOOK = "/api/v5/market/books-lite"
-GET_OPTION_TRADES = "/api/v5/market/option/instrument-family-trades"
+INSTRUMENT_FAMILY_TRADES = "/api/v5/market/option/instrument-family-trades"
 
 # Public Data-Complete-testComplete
 INSTRUMENT_INFO = "/api/v5/public/instruments"
+ESTIMATED_PRICE = "/api/v5/public/estimated-price"
 DELIVERY_EXERCISE = "/api/v5/public/delivery-exercise-history"
-OPEN_INTEREST = "/api/v5/public/open-interest"
+ESTIMATED_SETTLEMENT_INFO = "/api/v5/public/estimated-settlement-info"
+SETTLEMENT_HISTORY = "/api/v5/public/settlement-history"
 FUNDING_RATE = "/api/v5/public/funding-rate"
 FUNDING_RATE_HISTORY = "/api/v5/public/funding-rate-history"
+OPEN_INTEREST = "/api/v5/public/open-interest"
 PRICE_LIMIT = "/api/v5/public/price-limit"
 OPT_SUMMARY = "/api/v5/public/opt-summary"
-ESTIMATED_PRICE = "/api/v5/public/estimated-price"
 DICCOUNT_INTETEST_INFO = "/api/v5/public/discount-rate-interest-free-quota"
 SYSTEM_TIME = "/api/v5/public/time"
-LIQUIDATION_ORDERS = "/api/v5/public/liquidation-orders"
 MARK_PRICE = "/api/v5/public/mark-price"
 TIER = "/api/v5/public/position-tiers"
 INTEREST_LOAN = "/api/v5/public/interest-rate-loan-quota"  # need to add
 UNDERLYING = "/api/v5/public/underlying"  # need to add
-VIP_INTEREST_RATE_LOAN_QUOTA = (
-    "/api/v5/public/vip-interest-rate-loan-quota"  # need to add
-)
 INSURANCE_FUND = "/api/v5/public/insurance-fund"  # need to add
 CONVERT_CONTRACT_COIN = "/api/v5/public/convert-contract-coin"  # need to add
 GET_OPTION_TICKBANDS = "/api/v5/public/instrument-tick-bands"
+PREMIUM_HISTORY = "/api/v5/public/premium-history"
+ECONOMIC_CALENDAR = "/api/v5/public/economic-calendar"
 GET_OPTION_TRADES = "/api/v5/public/option-trades"
+PUBLIC_BLOCK_TRADES = "/api/v5/public/block-trades"
+# Interface under maintenance
+VIP_INTEREST_RATE_LOAN_QUOTA = (
+    "/api/v5/public/vip-interest-rate-loan-quota"  # need to add
+)
 
 # TRADING DATA-COMPLETE
 SUPPORT_COIN = "/api/v5/rubik/stat/trading-data/support-coin"
